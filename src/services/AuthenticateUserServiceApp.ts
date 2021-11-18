@@ -13,14 +13,14 @@ interface IUserResponse {
   name: string
 }
 
-class AuthenticateUserService {
+class AuthenticateUserServiceApp {
   async execute (code: string) {
     const url = "https://github.com/login/oauth/access_token";
 
     const { data: accessTokenResponse } = await axios.post<IAccessTokenResponse>(url, null, {
       params: {
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        client_id: process.env.GITHUB_CLIENT_ID_APP,
+        client_secret: process.env.GITHUB_CLIENT_SECRET_APP,
         code,
       }, 
       headers: {
@@ -72,4 +72,4 @@ class AuthenticateUserService {
   }
 }
 
-export { AuthenticateUserService }
+export { AuthenticateUserServiceApp }
